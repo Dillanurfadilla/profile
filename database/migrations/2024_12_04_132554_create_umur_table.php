@@ -1,0 +1,287 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('umur', function (Blueprint $table) {
+            $table->id();
+            $table->string('kode');
+            $table->string('wilayah');
+            $table->integer('nol_tahun_lk');
+            $table->integer('nol_tahun_pr');
+            $table->integer('satu_tahun_lk');
+            $table->integer('satu_tahun_pr');
+            $table->integer('dua_tahun_lk');
+            $table->integer('dua_tahun_pr');
+            $table->integer('tiga_tahun_lk');
+            $table->integer('tiga_tahun_pr');
+            $table->integer('empat_tahun_lk');
+            $table->integer('empat_tahun_pr');
+            $table->integer('lima_tahun_lk');
+            $table->integer('lima_tahun_pr');
+            $table->integer('enam_tahun_lk');
+            $table->integer('enam_tahun_pr');
+            $table->integer('tujuh_tahun_lk');
+            $table->integer('tujuh_tahun_pr');
+            $table->integer('delapan_tahun_lk');
+            $table->integer('delapan_tahun_pr');
+            $table->integer('sembilan_tahun_lk');
+            $table->integer('sembilan_tahun_pr');
+            $table->integer('sepuluh_tahun_lk');
+            $table->integer('sepuluh_tahun_pr');
+
+            $table->integer('sebelas_tahun_lk');
+            $table->integer('sebelas_tahun_pr');
+            $table->integer('dua_belas_tahun_lk');
+            $table->integer('dua_belas_tahun_pr');
+            $table->integer('tiga_belas_tahun_lk');
+            $table->integer('tiga_belas_tahun_pr');
+            $table->integer('empat_belas_tahun_lk');
+            $table->integer('empat_belas_tahun_pr');
+            $table->integer('lima_belas_tahun_lk');
+            $table->integer('lima_belas_tahun_pr');
+            $table->integer('enam_belas_tahun_lk');
+            $table->integer('enam_belas_tahun_pr');
+            $table->integer('tujuh_belas_tahun_lk');
+            $table->integer('tujuh_belas_tahun_pr');
+            $table->integer('delapan_belas_tahun_lk');
+            $table->integer('delapan_belas_tahun_pr');
+            $table->integer('sembilan_belas_tahun_lk');
+            $table->integer('sembilan_belas_tahun_pr');
+            $table->integer('dua_puluh_tahun_lk');
+            $table->integer('dua_puluh_tahun_pr');
+
+            $table->integer('dua_puluh_satu_tahun_lk');
+            $table->integer('dua_puluh_satu_tahun_pr');
+            $table->integer('dua_puluh_dua_tahun_lk');
+            $table->integer('dua_puluh_dua_tahun_pr');
+            $table->integer('dua_puluh_tiga_tahun_lk');
+            $table->integer('dua_puluh_tiga_tahun_pr');
+            $table->integer('dua_puluh_empat_tahun_lk');
+            $table->integer('dua_puluh_empat_tahun_pr');
+            $table->integer('dua_puluh_lima_tahun_lk');
+            $table->integer('dua_puluh_lima_tahun_pr');
+            $table->integer('dua_puluh_enam_tahun_lk');
+            $table->integer('dua_puluh_enam_tahun_pr');
+            $table->integer('dua_puluh_tujuh_tahun_lk');
+            $table->integer('dua_puluh_tujuh_tahun_pr');
+            $table->integer('dua_puluh_delapan_tahun_lk');
+            $table->integer('dua_puluh_delapan_tahun_pr');
+            $table->integer('dua_puluh_sembilan_tahun_lk');
+            $table->integer('dua_puluh_sembilan_tahun_pr');
+            $table->integer('tiga_puluh_tahun_lk');
+            $table->integer('tiga_puluh_tahun_pr');
+
+            $table->integer('tiga_puluh_satu_tahun_lk');
+            $table->integer('tiga_puluh_satu_tahun_pr');
+            $table->integer('tiga_puluh_dua_tahun_lk');
+            $table->integer('tiga_puluh_dua_tahun_pr');
+            $table->integer('tiga_puluh_tiga_tahun_lk');
+            $table->integer('tiga_puluh_tiga_tahun_pr');
+            $table->integer('tiga_puluh_empat_tahun_lk');
+            $table->integer('tiga_puluh_empat_tahun_pr');
+            $table->integer('tiga_puluh_lima_tahun_lk');
+            $table->integer('tiga_puluh_lima_tahun_pr');
+            $table->integer('tiga_puluh_enam_tahun_lk');
+            $table->integer('tiga_puluh_enam_tahun_pr');
+            $table->integer('tiga_puluh_tujuh_tahun_lk');
+            $table->integer('tiga_puluh_tujuh_tahun_pr');
+            $table->integer('tiga_puluh_delapan_tahun_lk');
+            $table->integer('tiga_puluh_delapan_tahun_pr');
+            $table->integer('tiga_puluh_sembilan_tahun_lk');
+            $table->integer('tiga_puluh_sembilan_tahun_pr');
+            $table->integer('empat_puluh_tahun_lk');
+            $table->integer('empat_puluh_tahun_pr');
+
+            $table->integer('empat_puluh_satu_tahun_lk');
+            $table->integer('empat_puluh_satu_tahun_pr');
+            $table->integer('empat_puluh_dua_tahun_lk');
+            $table->integer('empat_puluh_dua_tahun_pr');
+            $table->integer('empat_puluh_tiga_tahun_lk');
+            $table->integer('empat_puluh_tiga_tahun_pr');
+            $table->integer('empat_puluh_empat_tahun_lk');
+            $table->integer('empat_puluh_empat_tahun_pr');
+            $table->integer('empat_puluh_lima_tahun_lk');
+            $table->integer('empat_puluh_lima_tahun_pr');
+            $table->integer('empat_puluh_enam_tahun_lk');
+            $table->integer('empat_puluh_enam_tahun_pr');
+            $table->integer('empat_puluh_tujuh_tahun_lk');
+            $table->integer('empat_puluh_tujuh_tahun_pr');
+            $table->integer('empat_puluh_delapan_tahun_lk');
+            $table->integer('empat_puluh_delapan_tahun_pr');
+            $table->integer('empat_puluh_sembilan_tahun_lk');
+            $table->integer('empat_puluh_sembilan_tahun_pr');
+            $table->integer('lima_puluh_tahun_lk');
+            $table->integer('lima_puluh_tahun_pr');
+
+            $table->integer('lima_puluh_satu_tahun_lk');
+            $table->integer('lima_puluh_satu_tahun_pr');
+            $table->integer('lima_puluh_dua_tahun_lk');
+            $table->integer('lima_puluh_dua_tahun_pr');
+            $table->integer('lima_puluh_tiga_tahun_lk');
+            $table->integer('lima_puluh_tiga_tahun_pr');
+            $table->integer('lima_puluh_empat_tahun_lk');
+            $table->integer('lima_puluh_empat_tahun_pr');
+            $table->integer('lima_puluh_lima_tahun_lk');
+            $table->integer('lima_puluh_lima_tahun_pr');
+            $table->integer('lima_puluh_enam_tahun_lk');
+            $table->integer('lima_puluh_enam_tahun_pr');
+            $table->integer('lima_puluh_tujuh_tahun_lk');
+            $table->integer('lima_puluh_tujuh_tahun_pr');
+            $table->integer('lima_puluh_delapan_tahun_lk');
+            $table->integer('lima_puluh_delapan_tahun_pr');
+            $table->integer('lima_puluh_sembilan_tahun_lk');
+            $table->integer('lima_puluh_sembilan_tahun_pr');
+            $table->integer('enam_puluh_tahun_lk');
+            $table->integer('enam_puluh_tahun_pr');
+
+            $table->integer('enam_puluh_satu_tahun_lk');
+            $table->integer('enam_puluh_satu_tahun_pr');
+            $table->integer('enam_puluh_dua_tahun_lk');
+            $table->integer('enam_puluh_dua_tahun_pr');
+            $table->integer('enam_puluh_tiga_tahun_lk');
+            $table->integer('enam_puluh_tiga_tahun_pr');
+            $table->integer('enam_puluh_empat_tahun_lk');
+            $table->integer('enam_puluh_empat_tahun_pr');
+            $table->integer('enam_puluh_lima_tahun_lk');
+            $table->integer('enam_puluh_lima_tahun_pr');
+            $table->integer('enam_puluh_enam_tahun_lk');
+            $table->integer('enam_puluh_enam_tahun_pr');
+            $table->integer('enam_puluh_tujuh_tahun_lk');
+            $table->integer('enam_puluh_tujuh_tahun_pr');
+            $table->integer('enam_puluh_delapan_tahun_lk');
+            $table->integer('enam_puluh_delapan_tahun_pr');
+            $table->integer('enam_puluh_sembilan_tahun_lk');
+            $table->integer('enam_puluh_sembilan_tahun_pr');
+            $table->integer('tujuh_puluh_tahun_lk');
+            $table->integer('tujuh_puluh_tahun_pr');
+
+            $table->integer('tujuh_puluh_satu_tahun_lk');
+            $table->integer('tujuh_puluh_satu_tahun_pr');
+            $table->integer('tujuh_puluh_dua_tahun_lk');
+            $table->integer('tujuh_puluh_dua_tahun_pr');
+            $table->integer('tujuh_puluh_tiga_tahun_lk');
+            $table->integer('tujuh_puluh_tiga_tahun_pr');
+            $table->integer('tujuh_puluh_empat_tahun_lk');
+            $table->integer('tujuh_puluh_empat_tahun_pr');
+            $table->integer('tujuh_puluh_lima_tahun_lk');
+            $table->integer('tujuh_puluh_lima_tahun_pr');
+            $table->integer('tujuh_puluh_enam_tahun_lk');
+            $table->integer('tujuh_puluh_enam_tahun_pr');
+            $table->integer('tujuh_puluh_tujuh_tahun_lk');
+            $table->integer('tujuh_puluh_tujuh_tahun_pr');
+            $table->integer('tujuh_puluh_delapan_tahun_lk');
+            $table->integer('tujuh_puluh_delapan_tahun_pr');
+            $table->integer('tujuh_puluh_sembilan_tahun_lk');
+            $table->integer('tujuh_puluh_sembilan_tahun_pr');
+
+            $table->integer('delapan_puluh_tahun_lk');
+            $table->integer('delapan_puluh_tahun_pr');
+            $table->integer('delapan_puluh_satu_tahun_lk');
+            $table->integer('delapan_puluh_satu_tahun_pr');
+            $table->integer('delapan_puluh_dua_tahun_lk');
+            $table->integer('delapan_puluh_dua_tahun_pr');
+            $table->integer('delapan_puluh_tiga_tahun_lk');
+            $table->integer('delapan_puluh_tiga_tahun_pr');
+            $table->integer('delapan_puluh_empat_tahun_lk');
+            $table->integer('delapan_puluh_empat_tahun_pr');
+            $table->integer('delapan_puluh_lima_tahun_lk');
+            $table->integer('delapan_puluh_lima_tahun_pr');
+            $table->integer('delapan_puluh_enam_tahun_lk');
+            $table->integer('delapan_puluh_enam_tahun_pr');
+            $table->integer('delapan_puluh_tujuh_tahun_lk');
+            $table->integer('delapan_puluh_tujuh_tahun_pr');
+            $table->integer('delapan_puluh_delapan_tahun_lk');
+            $table->integer('delapan_puluh_delapan_tahun_pr');
+            $table->integer('delapan_puluh_sembilan_tahun_lk');
+            $table->integer('delapan_puluh_sembilan_tahun_pr');
+            $table->integer('sembilan_puluh_tahun_lk');
+            $table->integer('sembilan_puluh_tahun_pr');
+
+            $table->integer('sembilan_puluh_satu_tahun_lk');
+            $table->integer('sembilan_puluh_satu_tahun_pr');
+            $table->integer('sembilan_puluh_dua_tahun_lk');
+            $table->integer('sembilan_puluh_dua_tahun_pr');
+            $table->integer('sembilan_puluh_tiga_tahun_lk');
+            $table->integer('sembilan_puluh_tiga_tahun_pr');
+            $table->integer('sembilan_puluh_empat_tahun_lk');
+            $table->integer('sembilan_puluh_empat_tahun_pr');
+            $table->integer('sembilan_puluh_lima_tahun_lk');
+            $table->integer('sembilan_puluh_lima_tahun_pr');
+            $table->integer('sembilan_puluh_enam_tahun_lk');
+            $table->integer('sembilan_puluh_enam_tahun_pr');
+            $table->integer('sembilan_puluh_tujuh_tahun_lk');
+            $table->integer('sembilan_puluh_tujuh_tahun_pr');
+            $table->integer('sembilan_puluh_delapan_tahun_lk');
+            $table->integer('sembilan_puluh_delapan_tahun_pr');
+            $table->integer('sembilan_puluh_sembilan_tahun_lk');
+            $table->integer('sembilan_puluh_sembilan_tahun_pr');
+            $table->integer('seratus_tahun_lk');
+            $table->integer('seratus_tahun_pr');
+           
+            $table->integer('seratus_satu_tahun_lk');
+            $table->integer('seratus_satu_tahun_pr');
+            $table->integer('seratus_dua_tahun_lk');
+            $table->integer('seratus_dua_tahun_pr');
+            $table->integer('seratus_tiga_tahun_lk');
+            $table->integer('seratus_tiga_tahun_pr');
+            $table->integer('seratus_empat_tahun_lk');
+            $table->integer('seratus_empat_tahun_pr');
+            $table->integer('seratus_lima_tahun_lk');
+            $table->integer('seratus_lima_tahun_pr');
+            $table->integer('seratus_enam_tahun_lk');
+            $table->integer('seratus_enam_tahun_pr');
+            $table->integer('seratus_tujuh_tahun_lk');
+            $table->integer('seratus_tujuh_tahun_pr');
+            $table->integer('seratus_delapan_tahun_lk');
+            $table->integer('seratus_delapan_tahun_pr');
+            $table->integer('seratus_sembilan_tahun_lk');
+            $table->integer('seratus_sembilan_tahun_pr');
+            $table->integer('seratus_sepuluh_tahun_lk');
+            $table->integer('seratus_sepuluh_tahun_pr');
+
+            $table->integer('seratus_sebelas_tahun_lk');
+            $table->integer('seratus_sebelas_tahun_pr');
+            $table->integer('seratus_dua_belas_tahun_lk');
+            $table->integer('seratus_dua_belas_tahun_pr');
+            $table->integer('seratus_tiga_belas_tahun_lk');
+            $table->integer('seratus_tiga_belas_tahun_pr');
+            $table->integer('seratus_empat_belas_tahun_lk');
+            $table->integer('seratus_empat_belas_tahun_pr');
+            $table->integer('seratus_lima_belas_tahun_lk');
+            $table->integer('seratus_lima_belas_tahun_pr');
+            $table->integer('seratus_enam_belas_tahun_lk');
+            $table->integer('seratus_enam_belas_tahun_pr');
+            $table->integer('seratus_tujuh_belas_tahun_lk');
+            $table->integer('seratus_tujuh_belas_tahun_pr');
+            $table->integer('seratus_delapan_belas_tahun_lk');
+            $table->integer('seratus_delapan_belas_tahun_pr');
+            $table->integer('seratus_sembilan_belas_tahun_lk');
+            $table->integer('seratus_sembilan_belas_tahun_pr');
+            $table->integer('seratus_dua_puluh_tahun_lk');
+            $table->integer('seratus_dua_puluh_tahun_pr');
+            
+            
+            $table->integer('seratus_dua_puluh_satu_tahun_lk');
+            $table->integer('seratus_dua_puluh_satu_tahun_pr');
+
+
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('umur');
+    }
+};
