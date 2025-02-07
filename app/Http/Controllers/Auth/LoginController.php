@@ -42,5 +42,10 @@ class LoginController extends Controller
     {
         session()->flash('success', 'You are logged in!');
         return $this->redirectTo;
+
+        if (auth()->user()->isAdmin()) {
+            return '/admin/home';
+        }
+        return '/user/home';
     }
 }

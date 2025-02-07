@@ -28,7 +28,7 @@
 
 
     <!-- Favicon -->
-    <link href="{{ asset('img/favicon.png') }}" rel="icon" type="image/png">
+    <link href="{{ asset('img/logo_disdukcapil.png') }}" rel="icon" type="image/png">
 
     
 </head>

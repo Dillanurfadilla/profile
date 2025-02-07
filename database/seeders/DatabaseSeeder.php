@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
              'last_name' => 'fadilla',
              'password' => '123456',
              'email' => 'dilla@gmail.com',
+             'type' => 1, // Set the type as admin
          ]);
     }
 }

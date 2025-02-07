@@ -19,37 +19,29 @@
         </div>
     @endif
 
-    <div class="row">
-      
-          <div class="col-md-6 mb-3">
-          <div class="card text-white h-100" style="background-color: #68A4C4;">
-              <div class="card-body py-5">Kecamatan</div>
-              <div class="card-footer d-flex">
-              <a href="{{ url('/kecamatandetail') }}" target="_blank" class="text-white">View Details</a>
-              <span class="ms-auto">
-                  <i class="bi bi-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
+    
+          <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-primary text-white shadow">
+                        <div class="card-body">
+                            Kecamatan
+                            <div class="text-white-50 small">44</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="card bg-success text-white shadow">
+                        <div class="card-body">
+                            Desa
+                            <div class="text-white-50 small">424</div>
+                        </div>
+                    </div>
+                    </div>
+                          
           
-          <div class="col-md-6 mb-3">
-          <div class="card bg-warning text-white h-100">
-              <div class="card-body py-5">Desa</div>
-              <div class="card-footer d-flex">
-              <a href="{{ url('/desadetail') }}" target="_blank" class="text-white">View Details</a>
-                <span class="ms-auto">
-                  <i class="bi bi-chevron-right"></i>
-                </span>
-              </div>
-            </div>
-          </div>
-          
-
-
        <!--  Data Grafik -->  
        <div class="row">
-          <div class="col-md-4 mb-3">
+          <div class="col-md-6 mb-4">
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
@@ -60,7 +52,9 @@
               </div>      
             </div>
           </div>
-          <div class="col-md-4 mb-3">
+    
+          
+          <div class="col-md-6 mb-2">
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
@@ -71,8 +65,10 @@
               </div>
             </div>
         </div>
-
-          <div class="col-md-4 mb-3">
+      
+        
+        <div class="row">
+          <div class="col-md-6 mb-3">
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
@@ -82,10 +78,23 @@
                 <canvas class="chart-golonganDarah" width="400" height="200"></canvas>  
               </div>
             </div>
+            </div>
+            
+          <div class="col-md-6 mb-3">
+            <div class="card h-100">
+              <div class="card-header">
+                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
+                Data kepemilikan kk
+              </div>
+              <div class="card-body">
+                <canvas class="chart-kepemilikanKk" width="400" height="200"></canvas>
+              </div>
+            </div>
           </div>
 
+
           <div class="row">
-          <div class="col-md-4 mb-3">
+          <div class="col-md-6 mb-2">
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
@@ -97,7 +106,7 @@
             </div>
           </div>
      
-          <div class="col-md-4 mb-3">
+          <div class="col-md-6 mb-2">
             <div class="card h-100">
               <div class="card-header">
                 <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
@@ -109,19 +118,7 @@
             </div>
           </div>
 
-          <div class="col-md-4 mb-3">
-            <div class="card h-100">
-              <div class="card-header">
-                <span class="me-2"><i class="bi bi-bar-chart-fill"></i></span>
-                Data kepemilikan kk
-              </div>
-              <div class="card-body">
-                <canvas class="chart-kepemilikanKk" width="400" height="200"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-
+           
         <div class="row">
           <div class="col-md-12 mb-3">
             <div class="card h-100">
@@ -163,6 +160,18 @@
     </div>
 
    
+    <script>
+        $(document).ready(function() {
+            $.get('/api/kecamatan-count', function(data) {
+                $('#kecamatan-count').text(data.count);
+            });
+
+            $.get('/api/desa-count', function(data) {
+                $('#desa-count').text(data.count);
+            });
+        });
+    </script>
+    
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>

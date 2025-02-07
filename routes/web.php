@@ -33,6 +33,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// routes/web.php
+Route::group(['middleware' => ['auth', 'admin']], function () {
+    Route::get('/admin/home', [AdminController::class, 'index'])->name('admin.home');
+    // Other admin routes
+});
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/user/home', [UserController::class, 'index'])->name('user.home');
+    // Other user routes
+});
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

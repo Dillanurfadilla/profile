@@ -4,7 +4,7 @@
 <div class="container-fluid px-4">
         <h1 class="mt-4">Data umur</h1>
         <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="{{ url('dashboard') }}" style="color: #000000;">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ url('home') }}" style="color: #000000;">Dashboard</a></li>
             <li class="breadcrumb-item active">Data umur</li>
         </ol>
 </div>
@@ -22,10 +22,12 @@
             </div>
         @endif
         <div class="table-responsive mt-3">
+        @if (Auth::user()->type == 1) 
             <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
             href="{{ route("umur.create") }}"><ion-icon name="add"></ion-icon> Import</a>
+        @endif
             <table id="myTable" class="table table-bordered">
-<thead class="table-light">
+            <thead class="table-light">
                     <tr>
                         <th>ID</th>
                         <th>KODE</th>
@@ -528,11 +530,12 @@
                         <td>{{ $umur->seratus_dua_puluh_satu_tahun_lk }}</td>
                         <td>{{ $umur->seratus_dua_puluh_satu_tahun_pr }}</td>
                         <td>
+                        @if (Auth::user()->type == 1)
                             <a class="btn btn-primary" href="{{ route('umur.edit',$umur->id) }}">
                                 <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
                             <a class="btn btn-danger" href="{{ route('umur.show',$umur->id) }}">
                                 <ion-icon name="trash-outline"></ion-icon> Delete</a>
-  
+                        @endif
                         </td>
                     </tr>
                     @endforeach
