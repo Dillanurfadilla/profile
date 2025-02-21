@@ -25,10 +25,6 @@ class KecamatanController extends Controller
         return view('kecamatan.create');
     }
 
-    public function importView()
-    {
-    return view('kecamatan.import');
-    }
      
     public function store(Request $request) : RedirectResponse
     {

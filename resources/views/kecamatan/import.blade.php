@@ -37,7 +37,6 @@
                 <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
                 @enderror
             </div>
-            <!-- Manual Input for Kecamatan -->
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary ml-3">Submit</button>
             </div>
