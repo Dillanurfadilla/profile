@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\PekerjaanImport;
+use App\Exports\PekerjaanExport;
 use Session;
 
 
@@ -18,13 +19,8 @@ class PekerjaanController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 45;
-        $data['pekerjaan'] = PekerjaanModel::orderBy('id','asc')->paginate(45); 
-        $total = PekerjaanModel::count();
-        $totalPages = ceil($total / $perPage); 
-        $data['totalpages']=$totalPages;
-        return view('pekerjaan.index', $data);
+        $pekerjaan = PekerjaanModel::all(); // Mendapatkan semua data
+        return view('pekerjaan.index', compact('pekerjaan'));
     }
 
     public function create() : view
@@ -908,6 +904,10 @@ class PekerjaanController extends Controller
         return redirect()->back();
     }
 
+    public function export() 
+    {
+        return Excel::download(new PekerjaanExport, 'pekerjaan.xlsx');
+    }
 
 
 }

@@ -1,0 +1,8 @@
+.hidden-column {
+    display: none; /* Sembunyikan sepenuhnya */
+}
+
+.expanded-row .hidden-column {
+    display: table-cell; /* Tampilkan kembali saat tombol Show all ditekan */
+}
+

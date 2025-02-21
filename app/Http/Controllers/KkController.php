@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\KkImport;
+use App\Exports\KkExport;
 use Session;
 
 
@@ -17,13 +18,8 @@ class KkController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 25;
-        $data['kk'] = KkModel::orderBy('id','asc')->paginate(25); 
-        $total = KkModel::count();
-        $totalPages = ceil($total / $perPage); 
-        $data['totalpages']=$totalPages;
-        return view('kk.index', $data);
+        $kk = KkModel::all(); // Mendapatkan semua data
+        return view('kk.index', compact('kk'));
     }
 
     public function create() : view
@@ -152,6 +148,12 @@ class KkController extends Controller
         // Redirect back to the import page
         return redirect()->back();
     }
+
+    public function export() 
+    {
+        return Excel::download(new KkExport, 'kk.xlsx');
+    }
+
 
 
 }

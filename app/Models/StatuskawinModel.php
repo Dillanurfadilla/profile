@@ -1,12 +1,5 @@
 <?php
 
-/*
- Nama file: App/Models/StatuskawinModel.php
- Tools : LaravelGhost v1
- Created By : Freddy Wicaksono, M.Kom
- Tanggal : 21-Nov-2024
-*/
-
 namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

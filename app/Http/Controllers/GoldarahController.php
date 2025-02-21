@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\GoldarahImport;
+use App\Exports\GoldarahExport;
 use Session;
 
 
@@ -18,13 +19,8 @@ class GoldarahController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 25;
-        $data['goldarah'] = GoldarahModel::orderBy('id','asc')->paginate(25); 
-        $total = GoldarahModel::count();
-        $totalPages = ceil($total / $perPage); 
-        $data['totalpages']=$totalPages;
-        return view('goldarah.index', $data);
+        $goldarah = GoldarahModel::all(); // Mendapatkan semua data
+        return view('goldarah.index', compact('goldarah'));
     }
 
     public function create() : view
@@ -274,6 +270,12 @@ class GoldarahController extends Controller
         // Redirect back to the import page
         return redirect()->back();
     }
+
+    public function export() 
+    {
+        return Excel::download(new GoldarahExport, 'goldarah.xlsx');
+    }
+
 
 }
 

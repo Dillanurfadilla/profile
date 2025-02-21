@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\KecamatanImport;
+use App\Exports\KecamatanExport;
 use Session;
 
 class KecamatanController extends Controller
@@ -22,6 +23,11 @@ class KecamatanController extends Controller
     public function create() : View
     {
         return view('kecamatan.create');
+    }
+
+    public function importView()
+    {
+    return view('kecamatan.import');
     }
      
     public function store(Request $request) : RedirectResponse
@@ -100,4 +106,10 @@ class KecamatanController extends Controller
         return redirect()->back();
 
         }
+
+        public function export() 
+    {
+        return Excel::download(new KecamatanExport, 'kecamatan.xlsx');
+    }
+
     }        

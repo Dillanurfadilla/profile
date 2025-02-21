@@ -24,9 +24,16 @@
         @endif
         <div class="table-responsive mt-3">
         @if (Auth::user()->type == 1)
+        <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
+            href="{{ route("agama.create") }}"><ion-icon name="add"></ion-icon> Input</a>
+        
             <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
             href="{{ route("desaa.create") }}"><ion-icon name="add"></ion-icon> Import</a>
             @endif
+
+            <a href="{{ route('export.desaa') }}" class="btn btn-sm btn-success px-2" style="margin-bottom:10px">
+             <ion-icon name="download"></ion-icon> Export ke Excel</a>
+       
             <table id="myTable" class="table table-bordered">  
                 <thead class="table-light">
                     <tr>
@@ -84,14 +91,7 @@
 
                 </tbody>
             </table>
-            <div class="btn-group" style="margin-top:10px; float:right">
-                @php
-                    for($i=1;$i<=$totalpages;$i++){
-                        echo("<a href='/desaa?page=$i' class='btn btn-sm btn-outline-primary'>$i</a>");
-                    }   
-                @endphp
-            </div>
-        </div>
+          </div>
     </div>
 </div>
 @endsection

@@ -23,78 +23,87 @@
         @endif
         <div class="table-responsive mt-3">
         @if (Auth::user()->type == 1)
+        <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
+            href="{{ route("agama.create") }}"><ion-icon name="add"></ion-icon> Input</a>
+        
             <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
             href="{{ route("agama.create") }}"><ion-icon name="add"></ion-icon> Import</a>
-        @endif
-            <table id="myTable" class="table table-bordered">  
-            <thead class="table-light">
-                    <tr>
+        @endif 
+       
+        <a href="{{ route('export.agama') }}" class="btn btn-sm btn-success px-2" style="margin-bottom:10px">
+        <ion-icon name="download"></ion-icon> Export ke Excel</a>
+        
+        <table id="myTable" class="table table-bordered">
+                <thead class="table-light">
+                <tr>
                         <th>id</th>
                         <th>KODE</th>
                         <th>WILAYAH</th>
-                        <th>ISLAM (LK)</th>
-                        <th>ISLAM (PR)</th>
+                        <th class="hidden-column">ISLAM (LK)</th>
+                        <th class="hidden-column">ISLAM (PR)</th>
                         <th>ISLAM (JML)</th>
-                        <th>KRISTEN (LK)</th>
-                        <th>KRISTEN (PR)</th>
+                        <th class="hidden-column">KRISTEN (LK)</th>
+                        <th class="hidden-column">KRISTEN (PR)</th>
                         <th>KRISTEN (JML)</th>
-                        <th>KATHOLIK (LK)</th>
-                        <th>KATHOLIK (PR)</th>
-                        <th>KATHOLIK (JML)</th>
-                        <th>HINDU (LK)</th>
-                        <th>HINDU (PR)</th>
-                        <th>HINDU (JML)</th>
-                        <th>BUDHA (LK)</th>
-                        <th>BUDHA (PR)</th>
-                        <th>BUDHA (JML)</th>
-                        <th>KHONGHUCU (LK)</th>
-                        <th>KHONGHUCU (PR)</th>
-                        <th>KHONGHUCU (JML)</th>
-                        <th>KEPERCAYAAN (LK)</th>
-                        <th>KEPERCAYAAN (PR)</th>
+                        <th class="hidden-column">KATHOLIK (LK)</th>
+                        <th class="hidden-column">KATHOLIK (PR)</th>
+                        <th class="hidden-column">KATHOLIK (JML)</th>
+                        <th class="hidden-column">HINDU (LK)</th>
+                        <th class="hidden-column">HINDU (PR)</th>
+                        <th class="hidden-column">HINDU (JML)</th>
+                        <th class="hidden-column">BUDHA (LK)</th>
+                        <th class="hidden-column">BUDHA (PR)</th>
+                        <th class="hidden-column">BUDHA (JML)</th>
+                        <th class="hidden-column">KHONGHUCU (LK)</th>
+                        <th class="hidden-column">KHONGHUCU (PR)</th>
+                        <th class="hidden-column">KHONGHUCU (JML)</th>
+                        <th class="hidden-column" >KEPERCAYAAN (LK)</th>
+                        <th class="hidden-column">KEPERCAYAAN (PR)</th>
                         <th>KEPERCAYAAN (JML)</th>
-
-                        <th width="280px">Action</th>
+                        <th width="250px" >Action</th> 
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($agama as $agama)
-                    <tr>
-                    <td>{{ $agama->id }}</td>
-                    <td>{{ $agama->kode }}</td>
-                    <td>{{ $agama->wilayah }}</td>
-                    <td>{{ $agama->islam_lk }}</td>
-                    <td>{{ $agama->islam_pr }}</td>
-                    <td>{{ $agama->islam_jml }}</td>
-                    <td>{{ $agama->kristen_lk }}</td>
-                    <td>{{ $agama->kristen_pr }}</td>
-                    <td>{{ $agama->kristen_jml }}</td>
-                    <td>{{ $agama->katholik_lk }}</td>
-                    <td>{{ $agama->katholik_pr }}</td>
-                    <td>{{ $agama->katholik_jml }}</td>
-                    <td>{{ $agama->hindu_lk }}</td>
-                    <td>{{ $agama->hindu_pr }}</td>
-                    <td>{{ $agama->hindu_jml }}</td>
-                    <td>{{ $agama->budha_lk }}</td>
-                    <td>{{ $agama->budha_pr }}</td>
-                    <td>{{ $agama->budha_jml }}</td>
-                    <td>{{ $agama->khonghucu_lk }}</td>
-                    <td>{{ $agama->khonghucu_pr }}</td>
-                    <td>{{ $agama->khonghucu_jml }}</td>
-                    <td>{{ $agama->kepercayaan_lk }}</td>
-                    <td>{{ $agama->kepercayaan_pr }}</td>
-                    <td>{{ $agama->kepercayaan_jml }}</td>
-                    <td>
-                    @if (Auth::user()->type == 1)
+                    <tr id="row-{{ $agama->id }}">
+                        <td>{{ $agama->id }}</td>
+                        <td>{{ $agama->kode }}</td>
+                        <td>{{ $agama->wilayah }}</td>
+                        <td class="hidden-column">{{ $agama->islam_lk }}</td>
+                        <td class="hidden-column">{{ $agama->islam_pr }}</td>
+                        <td>{{ $agama->islam_jml }}</td>
+                        <td class="hidden-column">{{ $agama->kristen_lk }}</td>
+                        <td class="hidden-column">{{ $agama->kristen_pr }}</td>
+                        <td>{{ $agama->kristen_jml }}</td>
+                        <td class="hidden-column">{{ $agama->katholik_lk }}</td>
+                        <td class="hidden-column">{{ $agama->katholik_pr }}</td>
+                        <td class="hidden-column">{{ $agama->katholik_jml }}</td>
+                        <td class="hidden-column">{{ $agama->hindu_lk }}</td>
+                        <td class="hidden-column">{{ $agama->hindu_pr }}</td>
+                        <td class="hidden-column">{{ $agama->hindu_jml }}</td>
+                        <td class="hidden-column">{{ $agama->budha_lk }}</td>
+                        <td class="hidden-column">{{ $agama->budha_pr }}</td>
+                        <td class="hidden-column">{{ $agama->budha_jml }}</td>
+                        <td class="hidden-column">{{ $agama->khonghucu_lk }}</td>
+                        <td class="hidden-column">{{ $agama->khonghucu_pr }}</td>
+                        <td class="hidden-column">{{ $agama->khonghucu_jml }}</td>
+                        <td class="hidden-column">{{ $agama->kepercayaan_lk }}</td>
+                        <td class="hidden-column">{{ $agama->kepercayaan_pr }}</td>
+                        <td>{{ $agama->kepercayaan_jml}}</td>
+                        <td>
+                        <button class="btn btn-success btn-sm toggle-details" data-id="{{ $agama->id }}">
+                            Show all
+                        </button>                 
+                        @if (Auth::user()->type == 1)
                             <a class="btn btn-primary" href="{{ route('agama.edit',$agama->id) }}">
-                                <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
+                            <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
                             <a class="btn btn-danger" href="{{ route('agama.show',$agama->id) }}">
                                 <ion-icon name="trash-outline"></ion-icon> Delete</a>
                         @endif
                         </td>
                     </tr>
-                    @endforeach
-
+                @endforeach
+            
 
                   
                 <table class="table align-middle mb-0">
@@ -131,14 +140,13 @@
 
                 </tbody>
             </table>
-            <div class="btn-group" style="margin-top:10px; float:right">
-                @php
-                    for($i=1;$i<=$totalpages;$i++){
-                        echo("<a href='/agama?page=$i' class='btn btn-sm btn-outline-primary'>$i</a>");
-                    }   
-                @endphp
-            </div>
+           
         </div>
     </div>
 </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src= "/css/tbl.css"></script>
+<!-- Pastikan file JavaScript TIDAK di-cache -->
+<script src="/js/tabel.js"></script>

@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\StatuskawinImport;
+use App\Exports\StatuskawinExport;
 use Session;
 
 
@@ -15,13 +16,8 @@ class StatuskawinController extends Controller
 {
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 45;
-        $data['statuskawin'] = StatuskawinModel::orderBy('id', 'asc')->paginate(45); 
-        $total = StatuskawinModel::count();
-        $totalPages = ceil($total / $perPage); 
-        $data['totalpages'] = $totalPages;
-        return view('statuskawin.index', $data);
+        $statuskawin = StatuskawinModel::all(); // Mendapatkan semua data
+        return view('statuskawin.index', compact('statuskawin'));
     }
 
     public function create() : view
@@ -154,4 +150,10 @@ class StatuskawinController extends Controller
         // Redirect back to the import page
         return redirect()->back();
     }
+
+    public function export() 
+    {
+        return Excel::download(new StatuskawinExport, 'statuskawin.xlsx');
+    }
+
 }

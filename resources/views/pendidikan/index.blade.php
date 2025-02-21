@@ -22,92 +22,101 @@
             </div>
         @endif
         <div class="table-responsive mt-3">
-        @if (Auth::user()->type == 1)   
+        @if (Auth::user()->type == 1) 
+        <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
+            href="{{ route("agama.create") }}"><ion-icon name="add"></ion-icon> Input</a>
+          
              <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
              href="{{ route("pendidikan.create") }}"><ion-icon name="add"></ion-icon> Import</a>
-        @endif   
+        @endif  
+        
+        <a href="{{ route('export.pendidikan') }}" class="btn btn-sm btn-success px-2" style="margin-bottom:10px">
+        <ion-icon name="download"></ion-icon> Export ke Excel</a>
+       
              <table id="myTable" class="table table-bordered">
-        <thead class="table-light">
+             <thead class="table-light">
                     <tr>
                         <th>id</th>
                         <th>KODE</th>
                         <th>WILAYAH</th>
-                        <th>BELUM SEKOLAH (LK)</th>
-                        <th>BELUM SEKOLAH (PR)</th>
+                        <th class="hidden-column">BELUM SEKOLAH (LK)</th>
+                        <th class="hidden-column">BELUM SEKOLAH (PR)</th>
                         <th>BELUM SEKOLAH (JML)</th>
-                        <th>BELUM TAMAT SD SEDERAJAT (LK)</th>
-                        <th>BELUM TAMAT SD SEDERAJAT (PR)</th>
-                        <th>BELUM TAMAT SD SEDERAJAT (JML)</th>
-                        <th>TAMAT SD SEDERAJAT (LK)</th>
-                        <th>TAMAT SD SEDERAJAT (PR)</th>
+                        <th class="hidden-column">BELUM TAMAT SD SEDERAJAT (LK)</th>
+                        <th class="hidden-column">BELUM TAMAT SD SEDERAJAT (PR)</th>
+                        <th class="hidden-column">BELUM TAMAT SD SEDERAJAT (JML)</th>
+                        <th class="hidden-column">TAMAT SD SEDERAJAT (LK)</th>
+                        <th class="hidden-column">TAMAT SD SEDERAJAT (PR)</th>
                         <th>TAMAT SD SEDERAJAT (JML)</th>
-                        <th>SLTP SEDERAJAT (LK)</th>
-                        <th>SLTP SEDERAJAT (PR)</th>
-                        <th>SLTP SEDERAJAT (JML)</th>
-                        <th>SLTA SEDERAJAT (LK)</th>
-                        <th>SLTA SEDERAJAT (PR)</th>
-                        <th>SLTA SEDERAJAT (JML)</th>
-                        <th>DIPLOMA I II (LK)</th>
-                        <th>DIPLOMA I II (PR)</th>
-                        <th>DIPLOMA I II (JML)</th>
-                        <th>AKADEMI DIPLOMA III SMUDA (LK)</th>
-                        <th>AKADEMI DIPLOMA III SMUDA (PR)</th>
-                        <th>AKADEMI DIPLOMA III SMUDA (JML)</th>
-                        <th>DIPLOMA IV STRATA I (LK)</th>
-                        <th>DIPLOMA IV STRATA I (PR)</th>
-                        <th>DIPLOMA IV STRATA I (JML)</th>
-                        <th>STRATA II (LK)</th>
-                        <th>STRATA II (PR)</th>
-                        <th>STRATA II (JML)</th>
-                        <th>STRATA III (LK)</th>
-                        <th>STRATA III (PR)</th>
+                        <th class="hidden-column">SLTP SEDERAJAT (LK)</th>
+                        <th class="hidden-column">SLTP SEDERAJAT (PR)</th>
+                        <th class="hidden-column">SLTP SEDERAJAT (JML)</th>
+                        <th class="hidden-column">SLTA SEDERAJAT (LK)</th>
+                        <th class="hidden-column">SLTA SEDERAJAT (PR)</th>
+                        <th class="hidden-column">SLTA SEDERAJAT (JML)</th>
+                        <th class="hidden-column">DIPLOMA I II (LK)</th>
+                        <th class="hidden-column">DIPLOMA I II (PR)</th>
+                        <th class="hidden-column">DIPLOMA I II (JML)</th>
+                        <th class="hidden-column">AKADEMI DIPLOMA III SMUDA (LK)</th>
+                        <th class="hidden-column">AKADEMI DIPLOMA III SMUDA (PR)</th>
+                        <th class="hidden-column">AKADEMI DIPLOMA III SMUDA (JML)</th>
+                        <th class="hidden-column">DIPLOMA IV STRATA I (LK)</th>
+                        <th class="hidden-column">DIPLOMA IV STRATA I (PR)</th>
+                        <th class="hidden-column">DIPLOMA IV STRATA I (JML)</th>
+                        <th class="hidden-column">STRATA II (LK)</th>
+                        <th class="hidden-column">STRATA II (PR)</th>
+                        <th class="hidden-column">STRATA II (JML)</th>
+                        <th class="hidden-column">STRATA III (LK)</th>
+                        <th class="hidden-column">STRATA III (PR)</th>
                         <th>STRATA III (JML)</th>
-
-                        <th width="280px">Action</th>
+                        <th width="250px" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($pendidikan as $pendidikan)
-                    <tr>
+                <tr id="row-{{ $pendidikan->id }}">
                         <td>{{ $pendidikan->id }}</td>
                         <td>{{ $pendidikan->kode }}</td>
                         <td>{{ $pendidikan->wilayah }}</td>
-                        <td>{{ $pendidikan->tidak_belum_sekolah_lk }}</td>
-                        <td>{{ $pendidikan->tidak_belum_sekolah_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->tidak_belum_sekolah_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->tidak_belum_sekolah_pr }}</td>
                         <td>{{ $pendidikan->tidak_belum_sekolah_jml }}</td>
-                        <td>{{ $pendidikan->belum_tamat_sd_sederajat_lk }}</td>
-                        <td>{{ $pendidikan->belum_tamat_sd_sederajat_pr }}</td>
-                        <td>{{ $pendidikan->belum_tamat_sd_sederajat_jml }}</td>
-                        <td>{{ $pendidikan->tamat_sd_sederajat_lk }}</td>
-                        <td>{{ $pendidikan->tamat_sd_sederajat_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->belum_tamat_sd_sederajat_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->belum_tamat_sd_sederajat_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->belum_tamat_sd_sederajat_jml }}</td>
+                        <td class="hidden-column">{{ $pendidikan->tamat_sd_sederajat_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->tamat_sd_sederajat_pr }}</td>
                         <td>{{ $pendidikan->tamat_sd_sederajat_jml }}</td>
-                        <td>{{ $pendidikan->sltp_sederajat_lk }}</td>
-                        <td>{{ $pendidikan->sltp_sederajat_pr }}</td>
-                        <td>{{ $pendidikan->sltp_sederajat_jml }}</td>
-                        <td>{{ $pendidikan->slta_sederajat_lk }}</td>
-                        <td>{{ $pendidikan->slta_sederajat_pr }}</td>
-                        <td>{{ $pendidikan->slta_sederajat_jml }}</td>
-                        <td>{{ $pendidikan->diploma_i_ii_lk }}</td>
-                        <td>{{ $pendidikan->diploma_i_ii_pr }}</td>
-                        <td>{{ $pendidikan->diploma_i_ii_jml }}</td>
-                        <td>{{ $pendidikan->akademi_diploma_iii_smuda_lk }}</td>
-                        <td>{{ $pendidikan->akademi_diploma_iii_smuda_pr }}</td>
-                        <td>{{ $pendidikan->akademi_diploma_iii_smuda_jml }}</td>
-                        <td>{{ $pendidikan->diploma_iv_strata_i_lk }}</td>
-                        <td>{{ $pendidikan->diploma_iv_strata_i_pr }}</td>
-                        <td>{{ $pendidikan->diploma_iv_strata_i_jml }}</td>
-                        <td>{{ $pendidikan->strata_ii_lk }}</td>
-                        <td>{{ $pendidikan->strata_ii_pr }}</td>
-                        <td>{{ $pendidikan->strata_ii_jml }}</td>
-                        <td>{{ $pendidikan->strata_iii_lk }}</td>
-                        <td>{{ $pendidikan->strata_iii_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->sltp_sederajat_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->sltp_sederajat_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->sltp_sederajat_jml }}</td>
+                        <td class="hidden-column">{{ $pendidikan->slta_sederajat_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->slta_sederajat_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->slta_sederajat_jml }}</td>
+                        <td class="hidden-column">{{ $pendidikan->diploma_i_ii_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->diploma_i_ii_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->diploma_i_ii_jml }}</td>
+                        <td class="hidden-column">{{ $pendidikan->akademi_diploma_iii_smuda_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->akademi_diploma_iii_smuda_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->akademi_diploma_iii_smuda_jml }}</td>
+                        <td class="hidden-column">{{ $pendidikan->diploma_iv_strata_i_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->diploma_iv_strata_i_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->diploma_iv_strata_i_jml }}</td>
+                        <td class="hidden-column">{{ $pendidikan->strata_ii_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->strata_ii_pr }}</td>
+                        <td class="hidden-column">{{ $pendidikan->strata_ii_jml }}</td>
+                        <td class="hidden-column">{{ $pendidikan->strata_iii_lk }}</td>
+                        <td class="hidden-column">{{ $pendidikan->strata_iii_pr }}</td>
                         <td>{{ $pendidikan->strata_iii_jml }}</td>
                         <td>
+                        <button class="btn btn-success btn-sm toggle-details" data-id="{{ $pendidikan->id }}">
+                        Show all
+                        </button>
                         @if (Auth::user()->type == 1)
-                            <a class="btn btn-primary" href="{{ route('pendidikan.edit',$pendidikan->id) }}">
+                        <a class="btn btn-primary" href="{{ route('pendidikan.edit',$pendidikan->id) }}">
                                 <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
-                            <a class="btn btn-danger" href="{{ route('pendidikan.show',$pendidikan->id) }}">
-                                <ion-icon name="trash-outline"></ion-icon> Delete</a>
+                         <a class="btn btn-danger" href="{{ route('pendidikan.show',$pendidikan->id) }}">
+                                <ion-icon name="trash-outline"></ion-icon> Delete</a>          
                         @endif
                         </td>
                     </tr>
@@ -150,14 +159,14 @@
 
 
             </table>
-            <div class="btn-group" style="margin-top:10px; float:right">
-                @php
-                    for($i=1;$i<=$totalpages;$i++){
-                        echo("<a href='/pendidikan?page=$i' class='btn btn-sm btn-outline-primary'>$i</a>");
-                    }   
-                @endphp
-            </div>
+            
         </div>
     </div>
 </div>
 @endsection
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src= "/css/tbl.css"></script>
+<!-- Pastikan file JavaScript TIDAK di-cache -->
+<script src="/js/tabel.js"></script>

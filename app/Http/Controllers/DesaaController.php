@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DesaaImport;
+use App\Exports\DesaaExport;
 use Session;
 
 
@@ -16,13 +17,9 @@ class DesaaController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 45;
-        $data['desaa'] = DesaaModel::orderBy('id','asc')->paginate($perPage); 
-        $total = DesaaModel::count();
-        $totalPages = ceil($total / $perPage); 
-        $data['totalpages']=$totalPages;
-        return view('desaa.index', $data);
+        $desaa = DesaaModel::all(); // Mendapatkan semua data
+        return view('desaa.index', compact('desaa'));
+   
     }
 
     public function create() : view
@@ -122,6 +119,12 @@ class DesaaController extends Controller
         return redirect()->route('desaa.index')
                         ->with('success','desaa has been deleted successfully');
     }
+
+    public function export() 
+    {
+        return Excel::download(new DesaaExport, 'desaa.xlsx');
+    }
+
 }
 
      

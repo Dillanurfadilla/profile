@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\UmurImport;
+use App\Exports\UmurExport;
 use Session;
 
 class UmurController extends Controller
@@ -16,13 +17,8 @@ class UmurController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 25;
-        $data['umur'] = UmurModel::orderBy('id','asc')->paginate(25); 
-        $total = UmurModel::count();
-        $totalPages = ceil($total / $perPage); 
-        $data['totalpages']=$totalPages;
-        return view('umur.index', $data);
+        $umur = UmurModel::all(); // Mendapatkan semua data
+        return view('umur.index', compact('umur'));
     }
 
     public function create() : view
@@ -1049,6 +1045,11 @@ class UmurController extends Controller
 
         // Redirect back to the import page
         return redirect()->back();
+    }
+
+    public function export() 
+    {
+        return Excel::download(new UmurExport, 'umur.xlsx');
     }
 
 }

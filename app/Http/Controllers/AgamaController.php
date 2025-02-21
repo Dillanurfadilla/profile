@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\AgamaImport;
+use App\Exports\AgamaExport;
 use Session;
 
 class AgamaController extends Controller
@@ -15,14 +16,8 @@ class AgamaController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 20;
-        $data['agama'] = AgamaModel::orderBy('id', 'asc')->paginate(10);
-        $total = AgamaModel::count();
-        $totalPages = ceil($total / $perPage);
-        $data['totalpages'] = $totalPages;
-
-        return view('agama.index', $data);
+        $agama = AgamaModel::all(); // Mendapatkan semua data
+        return view('agama.index', compact('agama'));
     }
 
     public function create() : view
@@ -192,4 +187,11 @@ class AgamaController extends Controller
         // Redirect back to the import page
         return redirect()->back();
     }
+
+    public function export() 
+    {
+        return Excel::download(new AgamaExport, 'agama.xlsx');
+    }
+
+        
 }

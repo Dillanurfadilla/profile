@@ -4,7 +4,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Laravel SB Admin 2">
+    <meta name="description" content="Profile kependudukan">
     <meta name="author" content="Alejandro RH">
 
     <!-- CSRF Token -->
@@ -25,12 +25,12 @@
     <script type="module" src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://cdn.jsdelivr.net/npm/ionicons@latest/dist/ionicons/ionicons.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    
 
     <!-- Favicon -->
     <link href="{{ asset('img/logo_disdukcapil.png') }}" rel="icon" type="image/png">
-
-    
+   
 </head>
 <body id="page-top">
 
@@ -58,109 +58,96 @@
         <!-- Divider -->
         <hr class="sidebar-divider">
 
-         <!-- Nav Item - kecamatan -->
-         <li class="nav-item {{ Nav::isRoute('kecamatan') }}">
-            <a class="nav-link" href="{{ route('kecamatan') }}">
-            <ion-icon name="business-sharp"></ion-icon>
+        <!-- Nav Item - Kecamatan -->
+        <li class="nav-item {{ Nav::isRoute('kecamatan.index') }}">
+            <a class="nav-link" href="{{ route('kecamatan.index') }}">
+                <ion-icon name="business-sharp" class="me-3"></ion-icon>
                 <span>{{ __('Kecamatan') }}</span>
             </a>
         </li>
-        
 
         <!-- Nav Item - Desa -->
-        <li class="nav-item {{ Nav::isRoute('desaa') }}">
-            <a class="nav-link" href="{{ route('desaa') }}">
-                <i class="fa fa-building" aria-hidden="true"></i>
+        <li class="nav-item {{ Nav::isRoute('desaa.index') }}">
+            <a class="nav-link" href="{{ route('desaa.index') }}">
+                <i class="fas fa-building" aria-hidden="true"></i>
                 <span>{{ __('Desa') }}</span>
             </a>
         </li>
 
          <!-- Divider -->
-        <hr class="sidebar-divider">
+         <hr class="sidebar-divider">
 
-        <!-- Nav Item - Penduduk -->
-        <li class="nav-item {{ Nav::isRoute('penduduk') }}">
-            <a class="nav-link" href="{{ route('penduduk') }}">
-                <ion-icon name="people-sharp"></ion-icon>
-                <span>{{ __('Penduduk') }}</span>
-            </a>
-        </li>
 
-        <!-- Nav Item - Keluarga -->
-        <li class="nav-item {{ Nav::isRoute('keluarga') }}">
-            <a class="nav-link" href="{{ route('keluarga') }}">
-                <ion-icon name="home-sharp"></ion-icon>
-                <span>{{ __('Keluarga') }}</span>
-            </a>
-        </li>
-
-            <!-- Nav Item - KK -->
-            <li class="nav-item {{ Nav::isRoute('kk') }}">
-                <a class="nav-link" href="{{ route('kk') }}">
-                    <ion-icon name="id-card-sharp"></ion-icon>
-                    <span>{{ __('KK') }}</span>
+         <!-- Nav Item - KK -->
+         <li class="nav-item {{ Nav::isRoute('kk.index') }}">
+                <a class="nav-link" href="{{ route('kk.index') }}">
+                <ion-icon name="id-card-sharp"></ion-icon>
+                    <span>{{ __('Kepemilikan KK') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - Agama -->
-            <li class="nav-item {{ Nav::isRoute('agama') }}">
-                <a class="nav-link" href="{{ route('agama') }}">
-                    <ion-icon name="medal-sharp"></ion-icon>
+            <li class="nav-item {{ Nav::isRoute('agama.index') }}">
+                <a class="nav-link" href="{{ route('agama.index') }}">
+                <ion-icon name="reader"></ion-icon>       
                     <span>{{ __('Agama') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - Umur -->
-            <li class="nav-item {{ Nav::isRoute('umur') }}">
-                <a class="nav-link" href="{{ route('umur') }}">
+            <li class="nav-item {{ Nav::isRoute('umur.index') }}">
+                <a class="nav-link" href="{{ route('umur.index') }}">
                     <ion-icon name="calendar-sharp"></ion-icon>
                     <span>{{ __('Umur') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - Pendidikan -->
-            <li class="nav-item {{ Nav::isRoute('pendidikan') }}">
-                <a class="nav-link" href="{{ route('pendidikan') }}">
+            <li class="nav-item {{ Nav::isRoute('pendidikan.index') }}">
+                <a class="nav-link" href="{{ route('pendidikan.index') }}">
                     <ion-icon name="school-sharp"></ion-icon>
                     <span>{{ __('Pendidikan') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - Pekerjaan -->
-            <li class="nav-item {{ Nav::isRoute('pekerjaan') }}">
-                <a class="nav-link" href="{{ route('pekerjaan') }}">
+            <li class="nav-item {{ Nav::isRoute('pekerjaan.index') }}">
+                <a class="nav-link" href="{{ route('pekerjaan.index') }}">
                     <ion-icon name="briefcase-sharp"></ion-icon>
                     <span>{{ __('Pekerjaan') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - Status Kawin -->
-            <li class="nav-item {{ Nav::isRoute('statuskawin') }}">
-                <a class="nav-link" href="{{ route('statuskawin') }}">
+            <li class="nav-item {{ Nav::isRoute('statuskawin.index') }}">
+                <a class="nav-link" href="{{ route('statuskawin.index') }}">
                     <ion-icon name="heart-sharp"></ion-icon>
                     <span>{{ __('Status Kawin') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - Golongan Darah -->
-            <li class="nav-item {{ Nav::isRoute('goldarah') }}">
-                <a class="nav-link" href="{{ route('goldarah') }}">
+            <li class="nav-item {{ Nav::isRoute('goldarah.index') }}">
+                <a class="nav-link" href="{{ route('goldarah.index') }}">
                     <ion-icon name="medkit-sharp"></ion-icon>
                     <span>{{ __('Golongan Darah') }}</span>
                 </a>
             </li>
 
             <!-- Nav Item - Disabilitas -->
-            <li class="nav-item {{ Nav::isRoute('disabilitas') }}">
-                <a class="nav-link" href="{{ route('disabilitas') }}">
-                    <ion-icon name="accessibility-sharp"></ion-icon>
-                    <span>{{ __('Disabilitas') }}</span>
+            <li class="nav-item {{ Nav::isRoute('disabilitas.index') }}">
+                <a class="nav-link" href="{{ route('disabilitas.index') }}">
+                <ion-icon name="shield"></ion-icon>            
+               <span>{{ __('Disabilitas') }}</span>
                 </a>
             </li>
 
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
+        <!-- Nav Item - Arship -->
+
+
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -184,146 +171,19 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Topbar Search -->
-                <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
-
+                
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
-                    <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                    <li class="nav-item dropdown no-arrow d-sm-none">
-                        <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-search fa-fw"></i>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                            <form class="form-inline mr-auto w-100 navbar-search">
-                                <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary" type="button">
-                                            <i class="fas fa-search fa-sm"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </li>
-
-                    <!-- Nav Item - Alerts -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bell fa-fw"></i>
-                            <!-- Counter - Alerts -->
-                            <span class="badge badge-danger badge-counter">3+</span>
-                        </a>
-                        <!-- Dropdown - Alerts -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                            <h6 class="dropdown-header">
-                                Alerts Center
-                            </h6>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="mr-3">
-                                    <div class="icon-circle bg-primary">
-                                        <i class="fas fa-file-alt text-white"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="small text-gray-500">December 12, 2019</div>
-                                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="mr-3">
-                                    <div class="icon-circle bg-success">
-                                        <i class="fas fa-donate text-white"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="small text-gray-500">December 7, 2019</div>
-                                    $290.29 has been deposited into your account!
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="mr-3">
-                                    <div class="icon-circle bg-warning">
-                                        <i class="fas fa-exclamation-triangle text-white"></i>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="small text-gray-500">December 2, 2019</div>
-                                    Spending Alert: We've noticed unusually high spending for your account.
-                                </div>
-                            </a>
-                            <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                        </div>
-                    </li>
-
-                    <!-- Nav Item - Messages -->
-                    <li class="nav-item dropdown no-arrow mx-1">
-                        <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-envelope fa-fw"></i>
-                            <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">7</span>
-                        </a>
-                        <!-- Dropdown - Messages -->
-                        <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                            <h6 class="dropdown-header">
-                                Message Center
-                            </h6>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                                    <div class="status-indicator"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                                    <div class="status-indicator bg-warning"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                        </div>
-                    </li>
-
+                    
+                <li class="nav-item">
+          <a class="nav-link dark-mode-icon" href="javascript:;">
+            <div class="mode-icon">
+              <ion-icon name="moon-outline"></ion-icon>
+            </div>
+          </a>
+        </li>
+        
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
@@ -337,11 +197,6 @@
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Profile') }}
-                            </a>
-                            <a class="dropdown-item" href="javascript:void(0)">
-                                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Settings') }}
-                            </a>
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                 {{ __('Activity Log') }}
@@ -402,6 +257,29 @@
         </div>
     </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const darkModeToggle = document.querySelector(".dark-mode-icon");
+    const body = document.body;
+
+    // Cek apakah mode gelap aktif sebelumnya
+    if (localStorage.getItem("darkMode") === "enabled") {
+      body.classList.add("dark-mode");
+    }
+
+    darkModeToggle.addEventListener("click", function () {
+      body.classList.toggle("dark-mode");
+
+      // Simpan preferensi pengguna di localStorage
+      if (body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+      } else {
+        localStorage.setItem("darkMode", "disabled");
+      }
+    });
+  });
+</script>
 
 <!-- Scripts -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>

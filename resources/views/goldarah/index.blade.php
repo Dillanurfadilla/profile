@@ -22,104 +22,114 @@
             </div>
         @endif
         <div class="table-responsive mt-3">
-        @if (Auth::user()->type == 1)    
+        @if (Auth::user()->type == 1)   
+        <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
+            href="{{ route("agama.create") }}"><ion-icon name="add"></ion-icon> Input</a>
+         
             <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
             href="{{ route("goldarah.create") }}"><ion-icon name="add"></ion-icon> Import</a>
         @endif    
+
+        <a href="{{ route('export.goldarah') }}" class="btn btn-sm btn-success px-2" style="margin-bottom:10px">
+        <ion-icon name="download"></ion-icon> Export ke Excel</a>
+       
             <table id="myTable" class="table table-bordered">  
             <thead class="table-light">
                     <tr>
                         <th>ID</th>
                         <th>KODE</th>
                         <th>WILAYAH</th>
-                        <th>A (LK)</th>
-                        <th>A (PR)</th>
+                        <th class="hidden-column">A (LK)</th>
+                        <th class="hidden-column">A (PR)</th>
                         <th>A (JML)</th>
-                        <th>A- (LK)</th>
-                        <th>A- (PR)</th>
-                        <th>A- (JML)</th>
-                        <th>A+ (LK)</th>
-                        <th>A+ (PR)</th>
-                        <th>A+ (JML)</th>
-                        <th>B (LK)</th>
-                        <th>B (PR)</th>
-                        <th>B (JML)</th>
-                        <th>B- (LK)</th>
-                        <th>B- (PR)</th>
-                        <th>B- (JML)</th>
-                        <th>B+ (LK)</th>
-                        <th>B+ (PR)</th>
-                        <th>B+ (JML)</th>
-                        <th>AB (LK)</th>
-                        <th>AB (PR)</th>
-                        <th>AB (JML)</th>
-                        <th>AB- (LK)</th>
-                        <th>AB- (PR)</th>
-                        <th>AB- (JML)</th>
-                        <th>AB+ (LK)</th>
-                        <th>AB+ (PR)</th>
-                        <th>AB+ (JML)</th>
-                        <th>O (LK)</th>
-                        <th>O (PR)</th>
+                        <th class="hidden-column">A- (LK)</th>
+                        <th class="hidden-column">A- (PR)</th>
+                        <th class="hidden-column">A- (JML)</th>
+                        <th class="hidden-column">A+ (LK)</th>
+                        <th class="hidden-column">A+ (PR)</th>
+                        <th class="hidden-column">A+ (JML)</th>
+                        <th class="hidden-column">B (LK)</th>
+                        <th class="hidden-column">B (PR)</th>
+                        <th class="hidden-column">B (JML)</th>
+                        <th class="hidden-column">B- (LK)</th>
+                        <th class="hidden-column">B- (PR)</th>
+                        <th class="hidden-column">B- (JML)</th>
+                        <th class="hidden-column">B+ (LK)</th>
+                        <th class="hidden-column">B+ (PR)</th>
+                        <th class="hidden-column">B+ (JML)</th>
+                        <th class="hidden-column">AB (LK)</th>
+                        <th class="hidden-column">AB (PR)</th>
+                        <th class="hidden-column">AB (JML)</th>
+                        <th class="hidden-column">AB- (LK)</th>
+                        <th class="hidden-column">AB- (PR)</th>
+                        <th class="hidden-column">AB- (JML)</th>
+                        <th class="hidden-column">AB+ (LK)</th>
+                        <th class="hidden-column">AB+ (PR)</th>
+                        <th class="hidden-column">AB+ (JML)</th>
+                        <th class="hidden-column">O (LK)</th>
+                        <th class="hidden-column">O (PR)</th>
                         <th>O (JML)</th>
-                        <th>O- (LK)</th>
-                        <th>O- (PR)</th>
-                        <th>O- (JML)</th>
-                        <th>O+ (LK)</th>
-                        <th>O+ (PR)</th>
-                        <th>O+ (JML)</th>
-                        <th>TIDAK TAHU (LK)</th>
-                        <th>TIDAK TAHU (PR)</th>
+                        <th class="hidden-column">O- (LK)</th>
+                        <th class="hidden-column">O- (PR)</th>
+                        <th class="hidden-column">O- (JML)</th>
+                        <th class="hidden-column">O+ (LK)</th>
+                        <th class="hidden-column">O+ (PR)</th>
+                        <th class="hidden-column">O+ (JML)</th>
+                        <th class="hidden-column">TIDAK TAHU (LK)</th>
+                        <th class="hidden-column">TIDAK TAHU (PR)</th>
                         <th>TIDAK TAHU (JML)</th>
                         <th width="280px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($goldarah as $goldarah)
-                    <tr>
+                <tr id="row-{{ $goldarah->id }}">
                         <td>{{ $goldarah->id }}</td>
                         <td>{{ $goldarah->kode }}</td>
                         <td>{{ $goldarah->wilayah }}</td>
-                        <td>{{ $goldarah->a_lk }}</td>
-                        <td>{{ $goldarah->a_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_pr }}</td>
                         <td>{{ $goldarah->a_jml }}</td>
-                        <td>{{ $goldarah->a_minus_lk }}</td>
-                        <td>{{ $goldarah->a_minus_pr }}</td>
-                        <td>{{ $goldarah->a_minus_jml }}</td>
-                        <td>{{ $goldarah->a_plus_lk }}</td>
-                        <td>{{ $goldarah->a_plus_pr }}</td>
-                        <td>{{ $goldarah->a_plus_jml }}</td>
-                        <td>{{ $goldarah->b_lk }}</td>
-                        <td>{{ $goldarah->b_pr }}</td>
-                        <td>{{ $goldarah->b_jml }}</td>
-                        <td>{{ $goldarah->b_minus_lk }}</td>
-                        <td>{{ $goldarah->b_minus_pr }}</td>
-                        <td>{{ $goldarah->b_minus_jml }}</td>
-                        <td>{{ $goldarah->b_plus_lk }}</td>
-                        <td>{{ $goldarah->b_plus_pr }}</td>
-                        <td>{{ $goldarah->b_plus_jml }}</td>
-                        <td>{{ $goldarah->ab_lk }}</td>
-                        <td>{{ $goldarah->ab_pr }}</td>
-                        <td>{{ $goldarah->ab_jml }}</td>
-                        <td>{{ $goldarah->ab_minus_lk }}</td>
-                        <td>{{ $goldarah->ab_minus_pr }}</td>
-                        <td>{{ $goldarah->ab_minus_jml }}</td>
-                        <td>{{ $goldarah->ab_plus_lk }}</td>
-                        <td>{{ $goldarah->ab_plus_pr }}</td>
-                        <td>{{ $goldarah->ab_plus_jml }}</td>
-                        <td>{{ $goldarah->o_lk }}</td>
-                        <td>{{ $goldarah->o_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_minus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_minus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_minus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_plus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_plus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->a_plus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_minus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_minus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_minus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_plus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_plus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->b_plus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_minus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_minus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_minus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_plus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_plus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->ab_plus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_pr }}</td>
                         <td>{{ $goldarah->o_jml }}</td>
-                        <td>{{ $goldarah->o_minus_lk }}</td>
-                        <td>{{ $goldarah->o_minus_pr }}</td>
-                        <td>{{ $goldarah->o_minus_jml }}</td>
-                        <td>{{ $goldarah->o_plus_lk }}</td>
-                        <td>{{ $goldarah->o_plus_pr }}</td>
-                        <td>{{ $goldarah->o_plus_jml }}</td>
-                        <td>{{ $goldarah->tidak_tahu_lk }}</td>
-                        <td>{{ $goldarah->tidak_tahu_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_minus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_minus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_minus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_plus_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_plus_pr }}</td>
+                        <td class="hidden-column">{{ $goldarah->o_plus_jml }}</td>
+                        <td class="hidden-column">{{ $goldarah->tidak_tahu_lk }}</td>
+                        <td class="hidden-column">{{ $goldarah->tidak_tahu_pr }}</td>
                         <td>{{ $goldarah->tidak_tahu_jml }}</td>
                         <td>
+                        <button class="btn btn-success btn-sm toggle-details" data-id="{{ $goldarah->id }}">
+                        Show all
+                    </button>
                         @if (Auth::user()->type == 1)
                             <a class="btn btn-primary" href="{{ route('goldarah.edit',$goldarah->id) }}">
                                 <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
@@ -161,14 +171,14 @@
 
                 </tbody>
             </table>
-            <div class="btn-group" style="margin-top:10px; float:right">
-                @php
-                    for($i=1;$i<=$totalpages;$i++){
-                        echo("<a href='/goldarah?page=$i' class='btn btn-sm btn-outline-primary'>$i</a>");
-                    }   
-                @endphp
-            </div>
+           
         </div>
     </div>
 </div>
 @endsection
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src= "/css/tbl.css"></script>
+<!-- Pastikan file JavaScript TIDAK di-cache -->
+<script src="/js/tabel.js"></script>

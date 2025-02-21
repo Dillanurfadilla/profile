@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\DisabilitasImport;
+use App\Exports\DisabilitasExport;
 use Session;
 
 class DisabilitasController extends Controller
@@ -14,14 +15,8 @@ class DisabilitasController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 25; 
-        $data['disabilitas'] = DisabilitasModel::orderBy('id', 'asc')->paginate(25); 
-        $total = DisabilitasModel::count();
-        $totalPages = ceil($total / $perPage);
-        $data['totalpages'] = $totalPages;
-
-        return view('disabilitas.index', $data);
+        $disabilitas = DisabilitasModel::all(); // Mendapatkan semua data
+        return view('disabilitas.index', compact('disabilitas'));
     }
 
     public function create() : view
@@ -150,14 +145,8 @@ class DisabilitasController extends Controller
                          ->with('success', 'disabilitas updated successfully');
     }
 
-    public function destroy($id) : RedirectResponse
+    public function destroy(DisabilitasModel $disabilitas) : RedirectResponse
     {
-        $disabilitas = DisabilitasModel::find($id);
-        if (!$disabilitas) {
-            return redirect()->route('disabilitas.index')
-                            ->with('error', 'disabilitas not found');
-        }
-
         $disabilitas->delete(); 
         return redirect()->route('disabilitas.index')
                          ->with('success', 'disabilitas deleted successfully');
@@ -184,5 +173,11 @@ class DisabilitasController extends Controller
         // Redirect back to the import page
         return redirect()->back();
     }
+
+    public function export() 
+    {
+        return Excel::download(new DisabilitasExport, 'disabilitas.xlsx');
+    }
+
 
     }

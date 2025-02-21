@@ -8,6 +8,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\PendidikanImport;
+use App\Exports\PendidikanExport;
 use Session;
 
 class PendidikanController extends Controller
@@ -15,13 +16,8 @@ class PendidikanController extends Controller
 
     public function index(Request $request) : view
     {
-        $page = $request->input('page', 1);
-        $perPage = 25;
-        $data['pendidikan'] = PendidikanModel::orderBy('id','asc')->paginate(25); 
-        $total = PendidikanModel::count();
-        $totalPages = ceil($total / $perPage); 
-        $data['totalpages']=$totalPages;
-        return view('pendidikan.index', $data);
+        $pendidikan = PendidikanModel::all(); // Mendapatkan semua data
+        return view('pendidikan.index', compact('pendidikan'));
     }
 
     public function create() : view
@@ -235,7 +231,11 @@ class PendidikanController extends Controller
 
         }
 
-
+        public function export() 
+        {
+            return Excel::download(new PendidikanExport, 'pendidikan.xlsx');
+        }
+    
 
 }
 

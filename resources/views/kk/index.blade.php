@@ -1,5 +1,7 @@
 @extends("layouts.admin")
 @section("main-content")
+
+
 <!--start breadcrumb-->
 <div class="container-fluid px-4">
         <h1 class="mt-4">Data kk</h1>
@@ -23,6 +25,9 @@
         @endif
         <div class="table-responsive mt-3">
         @if (Auth::user()->type == 1)
+        <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
+            href="{{ route("agama.create") }}"><ion-icon name="add"></ion-icon> Input</a>
+        
             <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
             href="{{ route("kk.create") }}"><ion-icon name="add"></ion-icon> Import</a>
         @endif
@@ -53,62 +58,75 @@
                     </form>
                 </div>
             </div>
+            
+        <a href="{{ route('export.kk') }}" class="btn btn-sm btn-success px-2" style="margin-bottom:10px">
+        <ion-icon name="download"></ion-icon> Export ke Excel</a>
+       
+            <table id="myTable" class="table table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>ID</th>
+            <th>KODE</th>
+            <th>WILAYAH</th>
+            <th>KK_LK</th>
+            <th>KK_PR</th>
+            <th>KK_JML</th>
+            <th class="hidden-column">KEPEMILIKAN_LK</th>
+            <th class="hidden-column">KEPEMILIKAN_PR</th>
+            <th class="hidden-column">KEPEMILIKAN_JML</th>
+            <th class="hidden-column">BELUM_MEMILIKI_LK</th>
+            <th class="hidden-column">BELUM_MEMILIKI_PR</th>
+            <th class="hidden-column">BELUM_MEMILIKI_JML</th>
+            <th width="250px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($kk as $data)
+            <tr id="row-{{ $data->id }}" class="data-row">
+                <td>{{ $data->id }}</td>
+                <td>{{ $data->kode }}</td>
+                <td>{{ $data->wilayah }}</td>
+                <td>{{ $data->kk_lk }}</td>
+                <td>{{ $data->kk_pr }}</td>
+                <td>{{ $data->kk_jml }}</td>
+                <td class="hidden-column">{{ $data->kepemilikan_lk }}</td>
+                <td class="hidden-column">{{ $data->kepemilikan_pr }}</td>
+                <td class="hidden-column">{{ $data->kepemilikan_jml }}</td>
+                <td class="hidden-column">{{ $data->belum_memiliki_lk }}</td>
+                <td class="hidden-column">{{ $data->belum_memiliki_pr }}</td>
+                <td class="hidden-column">{{ $data->belum_memiliki_jml }}</td>
+                <td>
+                    <button class="btn btn-success btn-sm toggle-details" data-id="{{ $data->id }}">
+                        Show all
+                    </button>
+                @if (Auth::user()->type == 1) 
+                    <a class="btn btn-primary btn-sm" href="{{ route('kk.edit', $data->id) }}">
+                    <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
+                         
+                    </a>
+                    <button class="btn btn-danger btn-sm delete-data" data-id="{{ $data->id }}">
+                    <ion-icon name="trash-outline"></ion-icon> Delete</a>
+                         
+                    </button>
+                @endif
+                </td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>
 
-            <table id="myTable" class="table table-bordered">  
-                <thead class="table-light">
-                    <tr>
-                        <th>ID</th>
-                        <th>KODE</th>
-                        <th>WILAYAH</th>
-                        <th>KK_LK</th>
-                        <th>KK_PR</th>
-                        <th>KK_JML</th>
-                        <th>KEPEMILIKAN_LK</th>
-                        <th>KEPEMILIKAN_PR</th>
-                        <th>KEPEMILIKAN_JML</th>
-                        <th>BELUM_MEMILIKI_LK</th>
-                        <th>BELUM_MEMILIKI_PR</th>
-                        <th>BELUM_MEMILIKI_JML</th>
-                        <th width="280px">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                @foreach ($kk as $kk)
-                    <tr>
-                        <td>{{ $kk->id }}</td>
-                        <td>{{ $kk->kode }}</td>
-                        <td>{{ $kk->wilayah }}</td>
-                        <td>{{ $kk->kk_lk }}</td>
-                        <td>{{ $kk->kk_pr }}</td>
-                        <td>{{ $kk->kk_jml }}</td>
-                        <td>{{ $kk->kepemilikan_lk }}</td>
-                        <td>{{ $kk->kepemilikan_pr }}</td>
-                        <td>{{ $kk->kepemilikan_jml }}</td>
-                        <td>{{ $kk->belum_memiliki_lk }}</td>
-                        <td>{{ $kk->belum_memiliki_pr }}</td>
-                        <td>{{ $kk->belum_memiliki_jml }}</td>
-                        <td>
-                        @if (Auth::user()->type == 1)
-                            <a class="btn btn-primary" href="{{ route('kk.edit',$kk->id) }}">
-                                <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
-                            <a class="btn btn-danger" href="{{ route('kk.show',$kk->id) }}">
-                                <ion-icon name="trash-outline"></ion-icon> Delete</a>
-                        @endif
-                        </td>
-                    </tr>
-                    @endforeach
 
+           
 
                 </tbody>
             </table>
-            <div class="btn-group" style="margin-top:10px; float:right">
-                @php
-                    for($i=1;$i<=$totalpages;$i++){
-                        echo("<a href='/kk?page=$i' class='btn btn-sm btn-outline-primary'>$i</a>");
-                    }   
-                @endphp
-            </div>
+           
         </div>
     </div>
 </div>
 @endsection
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src= "/css/tbl.css"></script>
+<!-- Pastikan file JavaScript TIDAK di-cache -->
+<script src="/js/tabel.js"></script>

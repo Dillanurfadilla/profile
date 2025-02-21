@@ -45,8 +45,7 @@
                     <div class="form-group d-flex justify-content-between align-items-center">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-                            <label class="form-check-label" for="remember">
-                                <i class="fas fa-check-square"></i> {{ __('Remember Me') }}
+                             {{ __('Remember Me') }}
                             </label>
                         </div>
                     </div>

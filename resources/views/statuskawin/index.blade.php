@@ -23,49 +23,59 @@
         @endif
         <div class="table-responsive mt-3">
         @if (Auth::user()->type == 1)
+        <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
+            href="{{ route("agama.create") }}"><ion-icon name="add"></ion-icon> Input</a>
+        
             <a class="btn btn-sm btn-success px-2" style="margin-bottom:10px" 
             href="{{ route("statuskawin.create") }}"><ion-icon name="add"></ion-icon> Import</a>
          @endif
+
+         <a href="{{ route('export.statuskawin') }}" class="btn btn-sm btn-success px-2" style="margin-bottom:10px">
+        <ion-icon name="download"></ion-icon> Export ke Excel</a>
+       
             <table id="myTable" class="table table-bordered">
                 <thead class="table-light">
                     <tr>
                         <th>id</th>
                         <th>KODE</th>
                         <th>WILAYAH</th>
-                        <th>BELUM KAWIN (LK)</th>
-                        <th>BELUM KAWIN (PR)</th>
+                        <th  class="hidden-column">BELUM KAWIN (LK)</th>
+                        <th  class="hidden-column">BELUM KAWIN (PR)</th>
                         <th>BELUM KAWIN (JML)</th>
-                        <th>KAWIN (LK)</th>
-                        <th>KAWIN (PR)</th>
+                        <th  class="hidden-column">KAWIN (LK)</th>
+                        <th class="hidden-column">KAWIN (PR)</th>
                         <th>KAWIN (JML)</th>
-                        <th>CERAI HIDUP (LK)</th>
-                        <th>CERAI HIDUP (PR)</th>
+                        <th class="hidden-column">CERAI HIDUP (LK)</th>
+                        <th class="hidden-column">CERAI HIDUP (PR)</th>
                         <th>CERAI HIDUP (JML)</th>
-                        <th>CERAI MATI (LK)</th>
-                        <th>CERAI MATI (PR)</th>
+                        <th class="hidden-column">CERAI MATI (LK)</th>
+                        <th class="hidden-column">CERAI MATI (PR)</th>
                         <th>CERAI MATI (JML)</th>
-                        <th width="280px">Action</th>
+                        <th width="350px">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                 @foreach ($statuskawin as $statuskawin)
-                    <tr>
+                <tr id="row-{{ $statuskawin->id }}">
                         <td>{{ $statuskawin->id }}</td>
                         <td>{{ $statuskawin->kode }}</td>
                         <td>{{ $statuskawin->wilayah }}</td>
-                        <td>{{ $statuskawin->belum_kawin_lk }}</td>
-                        <td>{{ $statuskawin->belum_kawin_pr }}</td>
+                        <td  class="hidden-column">{{ $statuskawin->belum_kawin_lk }}</td>
+                        <td  class="hidden-column">{{ $statuskawin->belum_kawin_pr }}</td>
                         <td>{{ $statuskawin->belum_kawin_jml }}</td>
-                        <td>{{ $statuskawin->kawin_lk }}</td>
-                        <td>{{ $statuskawin->kawin_pr }}</td>
+                        <td  class="hidden-column">{{ $statuskawin->kawin_lk }}</td>
+                        <td  class="hidden-column">{{ $statuskawin->kawin_pr }}</td>
                         <td>{{ $statuskawin->kawin_jml }}</td>
-                        <td>{{ $statuskawin->cerai_hidup_lk }}</td>
-                        <td>{{ $statuskawin->cerai_hidup_pr }}</td>
+                        <td class="hidden-column">{{ $statuskawin->cerai_hidup_lk }}</td>
+                        <td class="hidden-column">{{ $statuskawin->cerai_hidup_pr }}</td>
                         <td>{{ $statuskawin->cerai_hidup_jml }}</td>
-                        <td>{{ $statuskawin->cerai_mati_lk }}</td>
-                        <td>{{ $statuskawin->cerai_mati_pr }}</td>
+                        <td class="hidden-column">{{ $statuskawin->cerai_mati_lk }}</td>
+                        <td class="hidden-column">{{ $statuskawin->cerai_mati_pr }}</td>
                         <td>{{ $statuskawin->cerai_mati_jml }}</td>
                         <td>
+                        <button class="btn btn-success btn-sm toggle-details" data-id="{{ $statuskawin->id }}">
+                        Show all
+                    </button>
                         @if (Auth::user()->type == 1)
                             <a class="btn btn-primary" href="{{ route('statuskawin.edit',$statuskawin->id) }}">
                                 <ion-icon name="pencil-sharp"></ion-icon> Edit</a>
@@ -110,18 +120,16 @@
 
             </tbody>
             </table>
-            <div class="btn-group" style="margin-top:10px; float:right">
-                @php
-                    for($i=1;$i<=$totalpages;$i++){
-                        echo("<a href='/statuskawin?page=$i' class='btn btn-sm btn-outline-primary'>$i</a>");
-                    }   
-                @endphp
-            </div>
-        </div>
+           </div>
     </div>
 </div>
 @endsection
 
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src= "/css/tbl.css"></script>
+<!-- Pastikan file JavaScript TIDAK di-cache -->
+<script src="/js/tabel.js"></script>
 
 
 
